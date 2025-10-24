@@ -1,5 +1,10 @@
 {
   "rows": [
-    { "title": "Ứng dụng phổ biến", "apps": [0,1] }
+    { "title": "Ứng dụng phổ biến", "apps": [0,1,6] },
+    { "title": "Truyền hình", "apps": [2,3,7] },
+    { "title": "YouTube", "apps": [0] },
+    { "title": "Thể thao", "apps": [4] },
+    { "title": "Phim", "apps": [1,5] },
+    { "title": "Tiện ích", "apps": [6,7] }
   ]
 }
