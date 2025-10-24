@@ -1,47 +1,47 @@
 <!doctype html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ANHBAO Store</title>
+  <title>ANHBAO Store Demo</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html, body { height: 100%; margin:0; background-color: #0a0a0a; font-family: 'SamsungOne', sans-serif; color: #fff; }
 
     header { display: flex; align-items: center; padding: 1rem; gap: 1rem; background-color: #111; border-bottom: 2px solid #444; }
-    header h1 { font-size: 1.6rem; font-weight: 700; letter-spacing: 1px; }
+    header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; }
 
     .search-bar { margin-left: auto; }
-    .search-input { padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; font-size: 1rem; width: 250px; }
+    .search-input { padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; font-size: 1.1rem; width: 300px; }
 
     .rows-container { padding: 1rem; display: flex; flex-direction: column; gap: 2rem; }
 
     .row { display: flex; flex-direction: column; gap: 0.5rem; }
-    .row-title { font-size: 1.3rem; font-weight: 600; margin-left: 0.5rem; text-transform: uppercase; color: #00a8ff; }
-    .row-scroll { display: flex; gap: 1rem; overflow-x: hidden; }
+    .row-title { font-size: 1.4rem; font-weight: 700; margin-left: 0.5rem; color: #00a8ff; }
+    .row-scroll { display: flex; gap: 1rem; overflow-x: hidden; scroll-behavior: smooth; }
 
-    .tv-card { width: 280px; height: 160px; border-radius: 0.5rem; overflow: hidden; background-color: #222; transition: transform 0.2s, box-shadow 0.2s; flex-shrink: 0; position: relative; }
+    .tv-card { width: 300px; height: 180px; border-radius: 0.5rem; overflow: hidden; background-color: #222; transition: transform 0.3s, box-shadow 0.3s; flex-shrink: 0; position: relative; }
     .tv-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; }
-    .tv-card:focus { transform: scale(1.12); box-shadow: 0 25px 50px rgba(0,0,0,0.8), 0 0 15px #00a8ff; outline: none; z-index: 10; }
+    .tv-card:focus { transform: scale(1.15); box-shadow: 0 30px 60px rgba(0,0,0,0.9), 0 0 20px #00a8ff; outline: none; z-index: 10; }
 
-    .card-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.7), transparent); padding: 0.5rem; font-size: 0.95rem; font-weight: 600; color: #00a8ff; }
+    .card-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.7), transparent); padding: 0.6rem; font-size: 1rem; font-weight: 700; color: #00a8ff; text-align: center; }
 
     .details-panel { position: fixed; inset:0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); padding: 2rem; display: none; }
     .details-content { background-color: #111; border-radius: 1rem; padding: 2rem; max-width: 1000px; width: 100%; display: flex; gap: 2rem; }
-    .details-content img { width: 320px; height: 180px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #00a8ff; }
+    .details-content img { width: 360px; height: 200px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #00a8ff; }
     .details-info { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-    .details-info h2 { font-size: 1.6rem; font-weight: 700; color: #00a8ff; }
-    .details-info p { font-size: 1rem; color: #ccc; }
-    .details-info button { margin-top: auto; background-color: #00a8ff; padding: 0.6rem 1.2rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; color: #000; }
+    .details-info h2 { font-size: 1.8rem; font-weight: 700; color: #00a8ff; }
+    .details-info p { font-size: 1.1rem; color: #ccc; }
+    .details-info button { margin-top: auto; background-color: #00a8ff; padding: 0.7rem 1.4rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; color: #000; }
     .details-info button:hover { filter: brightness(1.2); }
   </style>
 </head>
 <body>
   <header>
     <div class="logo" style="width:40px;height:40px;background:#00a8ff;border-radius:4px;"></div>
-    <h1>Samsung TV Store</h1>
+    <h1>ANHBAO Store</h1>
     <div class="search-bar">
-      <input type="text" id="searchInput" class="search-input" placeholder="Search apps...">
+      <input type="text" id="searchInput" class="search-input" placeholder="Tìm ứng dụng...">
     </div>
   </header>
 
@@ -51,10 +51,10 @@
     <div class="details-content">
       <img id="detailsPoster" src="" alt="Poster">
       <div class="details-info">
-        <h2 id="detailsTitle">App Title</h2>
-        <p id="detailsDev">Developer</p>
-        <p id="detailsDesc">Description</p>
-        <button id="installBtn">Install</button>
+        <h2 id="detailsTitle">Tên ứng dụng</h2>
+        <p id="detailsDev">Nhà phát triển</p>
+        <p id="detailsDesc">Mô tả</p>
+        <button id="installBtn">Cài đặt</button>
       </div>
     </div>
   </div>
@@ -70,27 +70,29 @@
     ];
 
     const ROWS = [
-      {title:'Featured', apps:[APPS[0],APPS[2],APPS[4]]},
-      {title:'Top Free', apps:[APPS[0],APPS[4],APPS[5]]},
-      {title:'Games', apps:[APPS[1]]},
-      {title:'Kids', apps:[APPS[3]]}
+      {title:'Phổ biến', apps:[APPS[0],APPS[2],APPS[4]]},
+      {title:'Miễn phí hàng đầu', apps:[APPS[0],APPS[4],APPS[5]]},
+      {title:'Trò chơi', apps:[APPS[1]]},
+      {title:'Trẻ em', apps:[APPS[3]]}
     ];
 
     const rowsEl = document.getElementById('rows');
+
+    let currentRow = 0, currentCard = 0;
 
     function createCard(app){
       const btn = document.createElement('button');
       btn.className = 'tv-card';
       btn.innerHTML = `<img src='${app.poster}'><div class='card-label'>${app.title}</div>`;
       btn.onclick = ()=>openDetails(app);
-      btn.onkeydown = (e)=>handleKey(e);
+      btn.tabIndex = -1;
       return btn;
     }
 
     function renderRows(filteredApps){
       rowsEl.innerHTML='';
       const data = filteredApps || ROWS;
-      data.forEach(row=>{
+      data.forEach((row,rowIndex)=>{
         const r = document.createElement('div'); r.className='row';
         const title = document.createElement('div'); title.className='row-title'; title.textContent=row.title;
         const scroll = document.createElement('div'); scroll.className='row-scroll';
@@ -98,23 +100,47 @@
         r.appendChild(title); r.appendChild(scroll);
         rowsEl.appendChild(r);
       });
+      setFocus(0,0);
     }
+
+    function setFocus(rowIndex, cardIndex){
+      document.querySelectorAll('.tv-card').forEach(c=>c.blur());
+      const row = rowsEl.children[rowIndex];
+      if(!row) return;
+      const card = row.querySelectorAll('.tv-card')[cardIndex];
+      if(card) card.focus();
+      currentRow = rowIndex;
+      currentCard = cardIndex;
+    }
+
+    document.addEventListener('keydown',(e)=>{
+      const row = rowsEl.children[currentRow];
+      const cards = row ? row.querySelectorAll('.tv-card') : [];
+      if(e.key==='ArrowRight'){ if(currentCard<cards.length-1) setFocus(currentRow,currentCard+1); }
+      else if(e.key==='ArrowLeft'){ if(currentCard>0) setFocus(currentRow,currentCard-1); }
+      else if(e.key==='ArrowDown'){ if(currentRow<ROWS.length-1){
+        const nextRow = rowsEl.children[currentRow+1];
+        const nextCards = nextRow.querySelectorAll('.tv-card');
+        setFocus(currentRow+1, Math.min(currentCard, nextCards.length-1));
+      }}
+      else if(e.key==='ArrowUp'){ if(currentRow>0){
+        const prevRow = rowsEl.children[currentRow-1];
+        const prevCards = prevRow.querySelectorAll('.tv-card');
+        setFocus(currentRow-1, Math.min(currentCard, prevCards.length-1));
+      }}
+      else if(e.key==='Enter'){ cards[currentCard]?.click(); }
+    });
 
     function openDetails(app){
       document.getElementById('detailsPoster').src = app.poster;
       document.getElementById('detailsTitle').textContent = app.title;
       document.getElementById('detailsDev').textContent = app.dev;
-      document.getElementById('detailsDesc').textContent = 'This is a demo description for ' + app.title;
+      document.getElementById('detailsDesc').textContent = 'Đây là mô tả cho ' + app.title;
       document.getElementById('details').style.display='flex';
     }
 
-    document.getElementById('installBtn').onclick=()=>{ alert('Install simulated'); };
-
+    document.getElementById('installBtn').onclick=()=>{ alert('Cài đặt giả lập'); };
     document.getElementById('details').addEventListener('click',(e)=>{ if(e.target===document.getElementById('details')) document.getElementById('details').style.display='none'; });
-
-    function handleKey(e){
-      // placeholder for keyboard navigation if needed
-    }
 
     document.getElementById('searchInput').addEventListener('input',(e)=>{
       const term = e.target.value.toLowerCase();
