@@ -1,0 +1,6 @@
+{
+  "apps": [
+    { "title": "YouTube", "poster": "https://i.imgur.com/4ZQZ4Yb.jpg", "dev": "Google LLC", "desc": "Xem video trực tuyến", "url": "https://youtube.com" },
+    { "title": "Netflix", "poster": "https://i.imgur.com/t9Qx6nE.jpg", "dev": "Netflix Inc.", "desc": "Xem phim và chương trình TV", "url": "https://netflix.com" }
+  ]
+}
