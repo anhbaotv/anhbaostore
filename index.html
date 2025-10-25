@@ -1,156 +1,158 @@
 <!doctype html>
 <html lang="vi">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ANHBAO Store</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    html, body { height: 100%; margin:0; background-color: #0a0a0a; font-family: 'SamsungOne', sans-serif; color: #fff; }
-    header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background-color: #111; border-bottom: 2px solid #444; }
-    header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: 1px; color:#00a8ff; display:flex; align-items:center; gap:0.6rem; }
-    .search-container { position: relative; width: 350px; }
-    .search-input { width: 100%; padding: 0.6rem 1rem 0.6rem 2.5rem; border-radius: 9999px; border: none; outline: none; font-size: 1.1rem; background: #222; color: #fff; transition: all 0.3s; }
-    .search-input::placeholder { color: #aaa; }
-    .search-input:focus { background: #333; box-shadow: 0 0 10px #00a8ff; }
-    .search-icon { position: absolute; top: 50%; left: 10px; transform: translateY(-50%); color: #00a8ff; font-size: 1.2rem; }
-    .rows-container { padding: 1rem; display: flex; flex-direction: column; gap: 3rem; }
-    .row { display: flex; flex-direction: column; gap: 1rem; }
-    .row-title { font-size: 1.5rem; font-weight: 700; margin-left: 0.5rem; color: #00a8ff; }
-    .row-scroll { display: flex; gap: 1.5rem; flex-wrap: wrap; }
-    .tv-card { width: 320px; height: 180px; border-radius: 0.5rem; overflow: hidden; background-color: #222; transition: transform 0.3s, box-shadow 0.3s; flex-shrink: 0; position: relative; }
-    .tv-card img { width: 100%; height: 100%; object-fit: cover; border-radius: 0.5rem; loading: lazy; }
-    .tv-card:focus { transform: scale(1.15); box-shadow: 0 0 25px #00a8ff; outline: none; z-index: 10; }
-    .card-label { position: absolute; bottom: 0; width: 100%; background: linear-gradient(0deg, rgba(0,0,0,0.7), transparent); padding: 0.6rem; font-size: 1rem; font-weight: 700; color: #00a8ff; text-align: center; }
-    .details-panel { position: fixed; inset:0; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px); padding: 2rem; display: none; }
-    .details-content { background-color: #111; border-radius: 1rem; padding: 2rem; max-width: 1000px; width: 100%; display: flex; gap: 2rem; }
-    .details-content img { width: 360px; height: 200px; object-fit: cover; border-radius: 0.5rem; border: 2px solid #00a8ff; }
-    .details-info { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
-    .details-info h2 { font-size: 1.8rem; font-weight: 700; color: #00a8ff; }
-    .details-info p { font-size: 1.1rem; color: #ccc; }
-    .details-info a { margin-top: auto; background-color: #00a8ff; padding: 0.7rem 1.4rem; border-radius: 0.5rem; font-weight: 700; cursor: pointer; color: #000; text-align:center; text-decoration:none; }
-    .details-info a:hover { filter: brightness(1.2); }
-    footer { background:#111; border-top:2px solid #333; text-align:center; padding:1rem; font-size:1rem; color:#bbb; }
-    footer a { color:#00a8ff; text-decoration:none; }
-    footer a:hover { text-decoration:underline; }
-  </style>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>ANHBAO Store</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+html,body{height:100%;margin:0;background:#0a0a0a;color:#fff;font-family:'SamsungOne',sans-serif;}
+header{display:flex;align-items:center;justify-content:space-between;padding:1rem 2rem;background:#111;border-bottom:2px solid #444;}
+header h1{font-size:1.8rem;font-weight:700;color:#00a8ff;display:flex;align-items:center;gap:.6rem;}
+.search-container{position:relative;width:350px;}
+.search-input{width:100%;padding:.6rem 1rem .6rem 2.5rem;border-radius:9999px;border:none;outline:none;font-size:1.1rem;background:#222;color:#fff;}
+.search-input::placeholder{color:#aaa;}
+.rows-container{padding:1rem;display:flex;flex-direction:column;gap:2rem;}
+.row{display:flex;flex-direction:column;gap:1rem;}
+.row-title{font-size:1.5rem;font-weight:700;color:#00a8ff;margin-left:.5rem;}
+.row-scroll{display:flex;gap:1.5rem;overflow-x:auto;flex-wrap:nowrap;scroll-behavior:smooth;padding-bottom:.5rem;}
+.tv-card{width:300px;height:170px;border-radius:.5rem;overflow:hidden;background:#222;flex-shrink:0;transition:transform .3s,box-shadow .3s;position:relative;}
+.tv-card img{width:100%;height:100%;object-fit:cover;border-radius:.5rem;}
+.tv-card:focus{transform:scale(1.2);box-shadow:0 0 30px #00a8ff;outline:none;z-index:10;}
+.card-label{position:absolute;bottom:0;width:100%;background:linear-gradient(0deg,rgba(0,0,0,.7),transparent);padding:.6rem;font-size:1rem;font-weight:700;color:#00a8ff;text-align:center;}
+.details-panel{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.9);backdrop-filter:blur(10px);padding:2rem;display:none;}
+.details-content{background:#111;border-radius:1rem;padding:2rem;max-width:1000px;width:100%;display:flex;gap:2rem;}
+.details-content img{width:360px;height:200px;object-fit:cover;border-radius:.5rem;border:2px solid #00a8ff;}
+.details-info{flex:1;display:flex;flex-direction:column;gap:.5rem;}
+.details-info h2{font-size:1.8rem;font-weight:700;color:#00a8ff;}
+.details-info p{font-size:1.1rem;color:#ccc;}
+.details-info a{margin-top:auto;background:#00a8ff;padding:.7rem 1.4rem;border-radius:.5rem;font-weight:700;cursor:pointer;color:#000;text-align:center;text-decoration:none;}
+.details-info a:hover{filter:brightness(1.2);}
+footer{background:#111;border-top:2px solid #333;text-align:center;padding:1rem;font-size:1rem;color:#bbb;}
+footer a{color:#00a8ff;text-decoration:none;}
+</style>
 </head>
 <body>
-  <header>
-    <h1><span style="display:inline-block;width:32px;height:32px;background:#00a8ff;border-radius:4px;"></span> ANHBAO Store</h1>
-    <div class="search-container">
-      <i class="search-icon">🔍</i>
-      <input type="text" id="searchInput" class="search-input" placeholder="Tìm ứng dụng yêu thích..." />
-    </div>
-  </header>
+<header>
+<h1><span style="display:inline-block;width:32px;height:32px;background:#00a8ff;border-radius:4px;"></span> ANHBAO Store</h1>
+<div class="search-container">
+<i class="search-icon">🔍</i>
+<input type="text" id="searchInput" class="search-input" placeholder="Tìm ứng dụng..." />
+</div>
+</header>
 
-  <main class="rows-container" id="rows"></main>
+<main class="rows-container" id="rows"></main>
 
-  <div id="details" class="details-panel">
-    <div class="details-content">
-      <img id="detailsPoster" src="" alt="Poster">
-      <div class="details-info">
-        <h2 id="detailsTitle">Tên ứng dụng</h2>
-        <p id="detailsDev">Nhà phát triển</p>
-        <p id="detailsDesc">Mô tả</p>
-        <a id="installLink" href="#" target="_blank">Cài đặt</a>
-      </div>
-    </div>
-  </div>
+<div id="details" class="details-panel">
+<div class="details-content">
+<img id="detailsPoster" src="" alt="Poster">
+<div class="details-info">
+<h2 id="detailsTitle">Tên ứng dụng</h2>
+<p id="detailsDev">Nhà phát triển</p>
+<p id="detailsDesc">Mô tả</p>
+<a id="installLink" href="#" target="_blank">Cài đặt</a>
+</div>
+</div>
+</div>
 
-  <footer>
-    <p>Liên hệ: <a href="mailto:anhbao.store@gmail.com">anhbao.store@gmail.com</a> | Hotline: <a href="tel:+84987654321">+84 987 654 321</a></p>
-    <p>© 2025 ANHBAO Store. Mọi quyền được bảo lưu.</p>
-  </footer>
+<footer>
+<p>Liên hệ: <a href="mailto:anhbao.store@gmail.com">anhbao.store@gmail.com</a> | Hotline: <a href="tel:+84987654321">+84 987 654 321</a></p>
+<p>© 2025 ANHBAO Store. Mọi quyền được bảo lưu.</p>
+</footer>
 
-  <script>
-    async function safeFetchJSON(path, fallback) {
-      try {
-        const res = await fetch(path);
-        if (!res.ok) throw new Error(`Không thể tải ${path}`);
-        return await res.json();
-      } catch (e) {
-        console.warn(`${path} không tìm thấy, sử dụng dữ liệu mặc định.`);
-        return fallback;
-      }
-    }
+<script>
+let appsData=[], rowsData=[], currentFocus=null;
+const appsURL='https://raw.githubusercontent.com/yourusername/anhbaostore/main/apps.json';
+const rowsURL='https://raw.githubusercontent.com/yourusername/anhbaostore/main/rows.json';
 
-    async function loadData() {
-      const defaultApps = {
-        apps: [
-          { title: "YouTube", poster: "https://i.imgur.com/4ZQZ4Yb.jpg", dev: "Google LLC", desc: "Xem video trực tuyến", url: "https://youtube.com" },
-          { title: "Netflix", poster: "https://i.imgur.com/t9Qx6nE.jpg", dev: "Netflix Inc.", desc: "Xem phim và chương trình TV", url: "https://netflix.com" },
-          { title: "FPT Play", poster: "https://i.imgur.com/Yw8nyZq.jpg", dev: "FPT Telecom", desc: "Xem truyền hình trực tiếp", url: "https://fptplay.vn" },
-          { title: "VTV Go", poster: "https://i.imgur.com/B2W7H9G.jpg", dev: "Đài Truyền hình Việt Nam", desc: "Truyền hình trực tuyến Việt Nam", url: "https://vtvgo.vn" },
-          { title: "K+ Live", poster: "https://i.imgur.com/Nmh7mCS.jpg", dev: "Kplus", desc: "Xem thể thao và bóng đá", url: "https://www.kplus.vn" },
-          { title: "Zing TV", poster: "https://i.imgur.com/t8kM2lw.jpg", dev: "VNG", desc: "Phim và chương trình truyền hình", url: "https://tv.zing.vn" },
-          { title: "Spotify", poster: "https://i.imgur.com/3kDcvn1.jpg", dev: "Spotify AB", desc: "Nghe nhạc trực tuyến", url: "https://spotify.com" },
-          { title: "Viettel TV", poster: "https://i.imgur.com/4xv9Y8x.jpg", dev: "Viettel Group", desc: "Giải trí và truyền hình Việt Nam", url: "https://tv360.vn" }
-        ]
-      };
+async function safeFetchJSON(url,fallback){
+try{
+const res=await fetch(url);
+if(!res.ok) throw new Error();
+return await res.json();
+}catch(e){
+console.warn(`${url} lỗi, dùng fallback.`);
+return fallback;
+}
+}
 
-      const defaultRows = {
-        rows: [
-          { title: "Ứng dụng phổ biến", apps: [0,1,6] },
-          { title: "Truyền hình", apps: [2,3,7] },
-          { title: "YouTube", apps: [0] },
-          { title: "Thể thao", apps: [4] },
-          { title: "Phim", apps: [1,5] },
-          { title: "Tiện ích", apps: [6,7] }
-        ]
-      };
+async function loadData(){
+appsData=await safeFetchJSON(appsURL,{apps:[]});
+rowsData=await safeFetchJSON(rowsURL,{rows:[]});
+const combined=rowsData.rows.map(r=>({
+title:r.title,
+apps:r.apps.map(id=>appsData.apps[id]).filter(a=>!!a)
+}));
+renderRows(combined);
+}
 
-      const [appsData, rowsData] = await Promise.all([
-        safeFetchJSON('apps.json', defaultApps),
-        safeFetchJSON('rows.json', defaultRows)
-      ]);
+const rowsEl=document.getElementById('rows');
 
-      const combined = rowsData.rows.map(row => ({
-        title: row.title,
-        apps: row.apps.map(id => appsData.apps[id]).filter(Boolean)
-      }));
+function createCard(app){
+const btn=document.createElement('button');
+btn.className='tv-card';
+btn.innerHTML=`<img src='${app.poster}' loading='lazy'><div class='card-label'>${app.title}</div>`;
+btn.onclick=()=>openDetails(app);
+btn.tabIndex=-1;
+return btn;
+}
 
-      renderRows(combined);
-    }
+function renderRows(data){
+rowsEl.innerHTML='';
+data.forEach(row=>{
+const r=document.createElement('div'); r.className='row';
+const title=document.createElement('div'); title.className='row-title'; title.textContent=row.title;
+const scroll=document.createElement('div'); scroll.className='row-scroll';
+row.apps.forEach(app=>scroll.appendChild(createCard(app)));
+r.appendChild(title); r.appendChild(scroll);
+rowsEl.appendChild(r);
+});
+// focus card đầu tiên
+const firstCard=document.querySelector('.tv-card');
+if(firstCard){firstCard.tabIndex=0;firstCard.focus();currentFocus=firstCard;}
+}
 
-    const rowsEl = document.getElementById('rows');
+function openDetails(app){
+document.getElementById('detailsPoster').src=app.poster;
+document.getElementById('detailsTitle').textContent=app.title;
+document.getElementById('detailsDev').textContent=app.dev;
+document.getElementById('detailsDesc').textContent=app.desc || ('Mô tả cho '+app.title);
+document.getElementById('installLink').href=app.url;
+document.getElementById('details').style.display='flex';
+}
 
-    function createCard(app){
-      const btn = document.createElement('button');
-      btn.className = 'tv-card';
-      btn.innerHTML = `<img src='${app.poster}' loading='lazy'><div class='card-label'>${app.title}</div>`;
-      btn.onclick = ()=>openDetails(app);
-      btn.tabIndex = -1;
-      return btn;
-    }
+document.getElementById('details').addEventListener('click',e=>{
+if(e.target===document.getElementById('details')) document.getElementById('details').style.display='none';
+});
 
-    function renderRows(data){
-      rowsEl.innerHTML='';
-      data.forEach((row)=>{
-        const r = document.createElement('div'); r.className='row';
-        const title = document.createElement('div'); title.className='row-title'; title.textContent=row.title;
-        const scroll = document.createElement('div'); scroll.className='row-scroll';
-        if(row.title === "Ứng dụng phổ biến"){
-          scroll.style.overflowX = 'visible';
-        }
-        row.apps.forEach(app=>scroll.appendChild(createCard(app)));
-        r.appendChild(title); r.appendChild(scroll);
-        rowsEl.appendChild(r);
-      });
-    }
+function focusNextCard(dir){
+if(!currentFocus){currentFocus=document.querySelector('.tv-card');currentFocus.focus();return;}
+const cards=Array.from(document.querySelectorAll('.tv-card'));
+let idx=cards.indexOf(currentFocus);
+if(dir==='right'&&idx<cards.length-1) idx++;
+if(dir==='left'&&idx>0) idx--;
+currentFocus=cards[idx];
+currentFocus.focus();
+currentFocus.scrollIntoView({behavior:'smooth',inline:'center'});
+}
 
-    function openDetails(app){
-      document.getElementById('detailsPoster').src = app.poster;
-      document.getElementById('detailsTitle').textContent = app.title;
-      document.getElementById('detailsDev').textContent = app.dev;
-      document.getElementById('detailsDesc').textContent = app.desc || ('Đây là mô tả cho ' + app.title);
-      document.getElementById('installLink').href = app.url;
-      document.getElementById('details').style.display='flex';
-    }
+document.addEventListener('keydown',e=>{
+if(e.key==='ArrowRight') focusNextCard('right');
+if(e.key==='ArrowLeft') focusNextCard('left');
+if(e.key==='Enter'&&currentFocus) currentFocus.click();
+});
 
-    document.getElementById('details').addEventListener('click',(e)=>{ if(e.target===document.getElementById('details')) document.getElementById('details').style.display='none'; });
+// search
+document.getElementById('searchInput').addEventListener('input',e=>{
+const kw=e.target.value.toLowerCase();
+const filteredRows=rowsData.rows.map(row=>({
+title:row.title,
+apps:row.apps.map(id=>appsData.apps[id]).filter(a=>a.title.toLowerCase().includes(kw))
+}));
+renderRows(filteredRows);
+});
 
-    loadData();
-  </script>
+loadData();
+</script>
 </body>
 </html>
