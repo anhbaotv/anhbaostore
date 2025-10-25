@@ -62,8 +62,8 @@ footer a{color:#00a8ff;text-decoration:none;}
 
 <script>
 let appsData=[], rowsData=[], currentFocus=null;
-const appsURL='https://raw.githubusercontent.com/yourusername/anhbaostore/main/apps.json';
-const rowsURL='https://raw.githubusercontent.com/yourusername/anhbaostore/main/rows.json';
+const appsURL='apps.json';
+const rowsURL='rows.json';
 
 async function safeFetchJSON(url,fallback){
 try{
@@ -107,7 +107,6 @@ row.apps.forEach(app=>scroll.appendChild(createCard(app)));
 r.appendChild(title); r.appendChild(scroll);
 rowsEl.appendChild(r);
 });
-// focus card đầu tiên
 const firstCard=document.querySelector('.tv-card');
 if(firstCard){firstCard.tabIndex=0;firstCard.focus();currentFocus=firstCard;}
 }
@@ -142,7 +141,6 @@ if(e.key==='ArrowLeft') focusNextCard('left');
 if(e.key==='Enter'&&currentFocus) currentFocus.click();
 });
 
-// search
 document.getElementById('searchInput').addEventListener('input',e=>{
 const kw=e.target.value.toLowerCase();
 const filteredRows=rowsData.rows.map(row=>({
