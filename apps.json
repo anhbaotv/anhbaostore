@@ -1,25 +1,12 @@
 {
   "apps": [
-    {
-      "title": "YouTube",
-      "poster": "https://i.imgur.com/4ZQZ4Yb.jpg",
-      "dev": "Google LLC",
-      "desc": "Xem video trực tuyến",
-      "url": "https://youtube.com"
-    },
-    {
-      "title": "Netflix",
-      "poster": "https://i.imgur.com/t9Qx6nE.jpg",
-      "dev": "Netflix Inc.",
-      "desc": "Xem phim và chương trình TV",
-      "url": "https://netflix.com"
-    },
-    {
-      "title": "FPT Play",
-      "poster": "https://i.imgur.com/Yw8nyZq.jpg",
-      "dev": "FPT Telecom",
-      "desc": "Xem truyền hình trực tiếp",
-      "url": "https://fptplay.vn"
-    }
+    {"title":"YouTube","poster":"https://i.imgur.com/4ZQZ4Yb.jpg","dev":"Google LLC","desc":"Xem video trực tuyến","url":"https://youtube.com"},
+    {"title":"Netflix","poster":"https://i.imgur.com/t9Qx6nE.jpg","dev":"Netflix Inc.","desc":"Xem phim và chương trình TV","url":"https://netflix.com"},
+    {"title":"FPT Play","poster":"https://i.imgur.com/Yw8nyZq.jpg","dev":"FPT Telecom","desc":"Xem truyền hình trực tiếp","url":"https://fptplay.vn"},
+    {"title":"VTV Go","poster":"https://i.imgur.com/B2W7H9G.jpg","dev":"Đài Truyền hình Việt Nam","desc":"Truyền hình trực tuyến Việt Nam","url":"https://vtvgo.vn"},
+    {"title":"K+ Live","poster":"https://i.imgur.com/Nmh7mCS.jpg","dev":"Kplus","desc":"Xem thể thao và bóng đá","url":"https://www.kplus.vn"},
+    {"title":"Zing TV","poster":"https://i.imgur.com/t8kM2lw.jpg","dev":"VNG","desc":"Phim và chương trình truyền hình","url":"https://tv.zing.vn"},
+    {"title":"Spotify","poster":"https://i.imgur.com/3kDcvn1.jpg","dev":"Spotify AB","desc":"Nghe nhạc trực tuyến","url":"https://spotify.com"},
+    {"title":"Viettel TV","poster":"https://i.imgur.com/4xv9Y8x.jpg","dev":"Viettel Group","desc":"Giải trí và truyền hình Việt Nam","url":"https://tv360.vn"}
   ]
 }
